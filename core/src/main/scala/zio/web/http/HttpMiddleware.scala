@@ -120,7 +120,8 @@ object HttpMiddleware {
           Response(
             HttpResponse.StatusCode,
             (_: Unit, statusCode: Int) =>
-              (zio.zmx.Metrics.increment("zio-web-requests", 1.0, Label("httpStatusCode", statusCode.toString)))
+              (zio.zmx.Metrics
+                .increment("zio-web-requests", 1.0, Label("httpStatusCode", statusCode.toString)))
                 .as(HttpHeaders.empty)
           )
         )
